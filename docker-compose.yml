@@ -1,6 +1,6 @@
 version: "3.4"
 
-name: "beeradvisor-nextjs"
+name: "beeradvisor-step-by-step"
 
 services:
   beer_db:
@@ -9,9 +9,9 @@ services:
       - postgres
       - -c
       - log_statement=all
-    container_name: beeradvisor_nextjs_beer_db
+    container_name: ba_nextjs_beer_db
     ports:
-      - "1360:5432"
+      - "1361:5432"
     environment:
       - POSTGRES_USER=klaus
       - POSTGRES_PASSWORD=stoertebeker

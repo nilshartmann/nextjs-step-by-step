@@ -35,3 +35,11 @@ export type AddRatingRequestBody = {
   stars: number;
   comment: string;
 };
+
+export type BeerSummary = {
+  id: string;
+  name: string;
+  ratings: { stars: number }[];
+};
+
+export type OrderBy = "desc" | "asc";

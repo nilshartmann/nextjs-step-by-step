@@ -1,6 +1,6 @@
 "use client";
 import { useState, MouseEvent } from "react";
-import styles from "./Form.module.css";
+import styles from "./AddRatingForm.module.css";
 import type { AddRatingRequestBody } from "@/app/types";
 import { useRouter } from "next/navigation";
 
@@ -20,9 +20,7 @@ export default function RatingForm({ beerName, beerId }: RatingFormProps) {
 
   const error = "";
 
-  const onLeaveRatingClick = async (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
+  const onSave = async () => {
     const body: AddRatingRequestBody = {
       beerId,
       username,
@@ -36,17 +34,11 @@ export default function RatingForm({ beerName, beerId }: RatingFormProps) {
       body: JSON.stringify(body),
     });
 
-    console.log("RESPONSE STATUS", response.status);
-
-    const r = await response.json();
-
-    console.log("R body", r);
-
     setUsername("");
     setComment("");
     setStars("");
+
     router.refresh();
-    console.log("REFRESH DONE");
   };
 
   return (
@@ -80,7 +72,7 @@ export default function RatingForm({ beerName, beerId }: RatingFormProps) {
             />
           </div>
           <div>
-            <button disabled={!buttonEnabled} onClick={onLeaveRatingClick}>
+            <button disabled={!buttonEnabled} onClick={onSave}>
               Leave rating for {beerName}
             </button>
           </div>

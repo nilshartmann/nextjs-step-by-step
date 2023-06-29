@@ -1,8 +1,7 @@
-import "./bootstrap-reboot.css";
-import "./google-fonts.css";
-import "./globals.css";
+import "./components/bootstrap-reboot.css";
+import "./components/google-fonts.css";
+import "./components/globals.css";
 import styles from "./layout.module.css";
-import Link from "next/link";
 import AppLink from "@/app/components/AppLink";
 
 export const metadata = {

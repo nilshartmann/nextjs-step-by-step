@@ -8,11 +8,13 @@ Run the following commands all from the root directory:
 * use docker-compose to start the database
   * Note: port `1360` must be available
 ```bash
-docker-compose
+docker-compose up -d
 ```
   * if you want to connect to the running database either use docker or connect with your fav db tool
     (for connection data see docker-compose file here)
-* on first run: setup the database content
+
+### 2. Setup and populate database
+* only on first run: setup the database content
 ```bash
 pnpm db:reset
 ```

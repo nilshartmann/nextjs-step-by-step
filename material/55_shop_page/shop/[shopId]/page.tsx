@@ -1,9 +1,9 @@
-import { Shop, ShopApiResponse } from "@/app/types";
+import { Shop, ShopApiResponse } from "../../../../app/types";
 import styles from "./page.module.css";
-import prisma from "@/app/lib/prisma";
+import prisma from "../../../../app/lib/prisma";
 import React, { Suspense } from "react";
 import Link from "next/link";
-import LoadingIndicator from "@/app/components/LoadingIndicator";
+import LoadingIndicator from "../../../../app/components/LoadingIndicator";
 type ShopResponse = ShopApiResponse<Shop>;
 
 async function sleep() {
