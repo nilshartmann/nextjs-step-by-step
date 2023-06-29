@@ -9,7 +9,11 @@ export const metadata = {
   description: "BeerAdvisor Next.js Sample App",
 };
 
-export default function RootLayout() {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
@@ -21,7 +25,7 @@ export default function RootLayout() {
               </h1>
             </div>
           </header>
-          <div className={styles.Main}></div>
+          <div className={styles.Main}>{children}</div>
           <footer className={styles.Footer}>
             <a href={GITHUB_REPO} target="_blank" rel="noopener noreferrer">
               {GITHUB_REPO}

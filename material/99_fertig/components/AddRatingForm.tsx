@@ -1,6 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 import styles from "./AddRatingForm.module.css";
+import type { AddRatingRequestBody } from "@/app/types";
+import { useRouter } from "next/navigation";
 
 type RatingFormProps = {
   beerName: string;
@@ -12,13 +14,31 @@ export default function RatingForm({ beerName, beerId }: RatingFormProps) {
   const [comment, setComment] = useState("");
   const [stars, setStars] = useState("");
 
+  const router = useRouter();
+
   const buttonEnabled = !!username && !!stars && !!comment;
 
   const error = "";
 
   const onSave = async () => {
-    // todo: Endpunkt zeigen
-    // todo: implementieren
+    const body: AddRatingRequestBody = {
+      beerId,
+      username,
+      comment,
+      stars: parseInt(stars),
+    };
+
+    const response = await fetch(`/api/beers/${beerId}/rating`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    setUsername("");
+    setComment("");
+    setStars("");
+
+    router.refresh();
   };
 
   return (

@@ -32,7 +32,16 @@ export default async function BeerDetails({
           </div>
           <div>
             <h1>Where to buy:</h1>
-            <Shops shopsResponse={shopsPromise} />
+
+            <Suspense
+              fallback={
+                <div style={{ marginBottom: "1.5rem" }}>
+                  <LoadingIndicator secondary />
+                </div>
+              }
+            >
+              <Shops shopsResponse={shopsPromise} />
+            </Suspense>
             <div className={styles.Ratings}>
               <h1>What customers say:</h1>
               {beer.ratings.map((rating) => (
