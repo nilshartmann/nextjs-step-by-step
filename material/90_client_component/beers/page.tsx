@@ -21,10 +21,7 @@ export default async function BeerListPage({
           stars: true,
         },
       },
-    },
-    orderBy: {
-      name: orderBy,
-    },
+    }
   });
 
   return (
