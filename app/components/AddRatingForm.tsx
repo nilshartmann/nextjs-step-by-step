@@ -17,7 +17,7 @@ export default function RatingForm({ beerName, beerId }: RatingFormProps) {
   const error = "";
 
   const onSave = async () => {
-    // todo: Endpunkt zeigen
+    // todo: Endpunkt zeigen (aus material kopieren)
     // todo: implementieren
   };
 
