@@ -1,6 +1,23 @@
 import { Shop, ShopApiResponse } from "@/app/types";
 import prisma from "@/app/lib/prisma";
 
+
+export async function loadBeers() {
+  const beers = await prisma.beer.findMany({
+    select: {
+      id: true,
+      name: true,
+      ratings: {
+        select: {
+          stars: true,
+        },
+      },
+    },
+  });
+
+  return beers;
+}
+
 export async function loadBeer(beerId: string) {
   const beer = await prisma.beer.findUnique({
     where: {
