@@ -1,3 +1,5 @@
+
+// ebenfalls aus diesem Verzeichnis kopieren:
 import styles from "./BeerDetails.module.css";
 
 
