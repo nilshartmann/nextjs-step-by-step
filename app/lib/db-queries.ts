@@ -52,7 +52,9 @@ export async function loadShops(beerId: string) {
 }
 
 export async function sleep() {
+export async function sleep(n = 1200) {
   return new Promise((res) => {
     setTimeout(() => res(undefined), 1200);
+    setTimeout(() => res(undefined), n);
   });
 }
