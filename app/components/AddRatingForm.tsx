@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
-import styles from "./AddRatingForm.module.css";
+import styles from "./Form.module.css";
+import { useFormState } from "react-dom";
+import { saveNewRating } from "@/app/lib/beer-actions";
 
 type RatingFormProps = {
   beerName: string;
@@ -13,22 +15,18 @@ export default function RatingForm({ beerName, beerId }: RatingFormProps) {
   const [stars, setStars] = useState("");
 
   const buttonEnabled = !!username && !!stars && !!comment;
-
   const error = "";
-
-  const onSave = async () => {
-    // todo: Endpunkt zeigen (aus material kopieren)
-    // todo: implementieren
-  };
 
   return (
     <div className={styles.Form}>
-      <form>
+      <form action={saveNewRating}>
         <fieldset>
           <div>
             <label>Your name:</label>{" "}
+            <input type={"hidden"} name={"beerId"} value={beerId} />
             <input
               type="text"
+              name={"username"}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -37,6 +35,7 @@ export default function RatingForm({ beerName, beerId }: RatingFormProps) {
             <label>Your rating (1-5):</label>{" "}
             <input
               type="number"
+              name={"stars"}
               min="1"
               max="5"
               value={stars}
@@ -47,12 +46,13 @@ export default function RatingForm({ beerName, beerId }: RatingFormProps) {
             <label>Your comment:</label>{" "}
             <input
               type="text"
+              name={"comment"}
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
           </div>
           <div>
-            <button disabled={!buttonEnabled} onClick={onSave}>
+            <button type="submit" disabled={!buttonEnabled}>
               Leave rating for {beerName}
             </button>
           </div>

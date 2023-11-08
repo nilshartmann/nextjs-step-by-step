@@ -31,6 +31,9 @@ export async function loadBeer(beerId: string) {
       ratings: true,
     },
   });
+
+  // await sleep(1200);
+
   return beer;
 }
 
@@ -47,6 +50,8 @@ export async function loadShops(beerId: string) {
       `Loading beer ${beerId} failed with status code ${response.status}`
     );
   }
+
+  // await sleep(2400);
 
   return response.json() as Promise<ShopsReponse>;
 }
