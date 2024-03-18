@@ -1,0 +1,5 @@
+type BeerListPageProps = {
+  searchParams?: { [key: string]: string };
+};
+
+const orderBy = searchParams?.order_by || "name_asc";

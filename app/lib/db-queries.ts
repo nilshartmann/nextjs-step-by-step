@@ -1,7 +1,7 @@
 import { OrderBy, Shop, ShopApiResponse } from "@/app/types";
 import prisma from "@/app/lib/prisma";
 
-export async function loadBeers(orderBy?: OrderBy) {
+export async function loadBeers(orderBy?: string) {
   const beers = await prisma.beer.findMany({
     select: {
       id: true,
