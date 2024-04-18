@@ -17,7 +17,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning>
         <div className={styles.BeerRatingApp}>
           <header className={styles.Header}>
             <div className={styles.MainHeader}>
